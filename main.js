@@ -26,7 +26,8 @@ addBook('Game of Jay', 'Jay', 'action', 670, false, '2025-06-02')
 addBook('Iron Jay', 'Jay', 'action', 560, false, '2021-03-12')
 addBook('Hunger Jay', 'Jay', 'action', 780, true, '1997-07-31')
 addBook('Attack on Jay', 'Eren Jayger', 'thriller', 800, false,'0001-01-01')
-
+addBook('Jay of the Rings', 'Jay', 'Fantasy', 400, false, '2023-04-06')
+addBook('Jaydarella', 'Jay', 'Fantasy', 440, false, '2023-07-06')
 const main = document.querySelector('.main')
 const displayBooks = function(library) {
     main.innerHTML = ''
