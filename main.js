@@ -55,11 +55,15 @@ const displayBooks = function(library) {
         pageTag.classList.add('more-info')
         pageTag.textContent = `${book.noOfPages} pages`
         details.appendChild(pageTag)
-        div.appendChild(details)
         const readButton = document.createElement('button')
         readButton.classList.add('read')
         readButton.textContent = 'read'
-        div.appendChild(readButton)
+        details.appendChild(readButton)
+        const deleteButton = document.createElement('button')
+        deleteButton.classList.add('delete')
+        deleteButton.textContent = 'Delete'
+        details.append(deleteButton)
+        div.appendChild(details)
         main.appendChild(div)
     }
 }
@@ -72,7 +76,6 @@ const pubDate = document.querySelector('#pub')
 const add = document.querySelector('.add-book')
 const dialog = document.querySelector('dialog')
 const submit = document.querySelector('.submit')
-const readBtn = document.querySelectorAll('.read')
 add.addEventListener('click', () => {
     name.value = ''
     author.value = ''
@@ -85,10 +88,17 @@ submit.addEventListener('click', () => {
     addBook(name.value, author.value, genre.value, pageNumber.value, 'not read', pubDate.value)
     displayBooks(library)
 })
-
+displayBooks(library)
+const readBtn = document.querySelectorAll('.read')
 readBtn.forEach((button) => {
     button.addEventListener('click', (event) => {
-        
+        for (let book of library) {
+            if (event.target === book.id && book.read){
+                event.target.style.backgroundColor = 'green'
+            }
+            else if (event.target === book.id && !book.read){
+                event.target.style.backgroundColor = 'white'
+            }
+        }
     })
 })
-displayBooks(library)

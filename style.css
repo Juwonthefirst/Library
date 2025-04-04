@@ -7,10 +7,10 @@
     src: url(fonts/FunnelDisplay-Regular.ttf) format(truetype);
 }
 
-.submit, .read{
+.submit, .read, .delete{
     background: #f0eef1;
     padding: 5px;
-    border-radius: 15px;
+    border-radius: 7px;
 }
 .body{
     display: flex;
@@ -54,17 +54,20 @@
 .name{
     grid-column: span 3;
     font-size: 20px;
-    padding-bottom: 5px;
+    padding: 5px 0;
     border-bottom: 2px solid black;
 }
 
 .author{
     grid-column: span 3;
     font-size: 16px;
+    padding: 5px 0;
 }
 
 .more-info{
     font-size: 13px;
+    /*border-bottom: 2px solid black;*/
+    margin-bottom: 10px;
 }
 
 .add-book{
@@ -111,6 +114,10 @@ input{
 
 input:focus{
     outline: none;
+}
+
+.delete{
+    grid-column-start: 3
 }
 /*.body{
     background-color: ;
