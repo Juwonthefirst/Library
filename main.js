@@ -1,7 +1,5 @@
 console.log('Hello World!');
-let formName;
-let formAge;
-let library = []
+const library = []
 function Books(name, author, genre, noOfPages, readStatus, pubDate) {
     if (!new.target){
         throw Error('Use new when creating instances')
@@ -28,6 +26,7 @@ addBook('Game of Jay', 'Jay', 'action', 670, false, '2025-06-02')
 addBook('Iron Jay', 'Jay', 'action', 560, false, '2021-03-12')
 addBook('Hunger Jay', 'Jay', 'action', 780, true, '1997-07-31')
 addBook('Attack on Jay', 'Eren Jayger', 'thriller', 800, false,'0001-01-01')
+
 const main = document.querySelector('.main')
 const displayBooks = function(library) {
     main.innerHTML = ''
