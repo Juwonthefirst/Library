@@ -119,6 +119,11 @@ input:focus{
 .delete{
     grid-column-start: 3;
     background-color: #FC2828F0;
+    color: ghostwhite;
+}
+
+.read{
+    background-color: #94E7AE
 }
 /*.body{
     : ;
