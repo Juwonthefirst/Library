@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+}
+button{
+    background: black;
+    color: lightblue;
+}
+.body{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100vh;
+    background-color: #F7F7A2;
+}
+
+.header{
+    background-color: #42445A;
+    text-align: center;
+    padding: 7px;
+    border-bottom: 2px solid black;
+    color: white;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    overflow-y: auto;
+    gap: 20px;
+}
+
+.book{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: ghostwhite;
+}
+
+.details{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+.name{
+    grid-column: span 3;
+    font-size: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid black;
+}
+
+.author{
+    grid-column: span 3;
+    font-size: 16px;
+}
+
+.more-info{
+    font-size: 13px;
+}
+
+.add-book{
+    position: absolute;
+    top: 80%;
+    left: 75%;
+    z-index: 1;
+    height: 60px;
+    width: 60px;
+    border-radius: 15px;
+    font-size: 48px;
+}
+
+dialog{
+    position: absolute;
+    width: 70vw;
+    border-radius: 20px;
+    justify-self: center;
+    align-self: center;
+    padding: 20px;
+    background-color: #BABA77;
+}
+
+dialog > form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input{
+    padding: 7px;
+    border-radius: 7px;
+    border: 2px solid white;
+    background-color: white;
+}
+
+input:focus{
+    outline: none;
+}
+/*.body{
+    background-color: ;
+}
+.header{
+    color: lightblue;
+    border-color: lightblue;
+}
+
+.book{
+    border-color: black;
+    background-color: white;
+    color: black;
+    
+}

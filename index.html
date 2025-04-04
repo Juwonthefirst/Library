@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HTML</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="body">
+        <div class="header">
+            <h2>Library</h2>    
+        </div>
+        <div class="main">
+            <div class="book">
+                <div class="details">
+                    <h5 class="name">The life of a Man</h5> 
+                    <p class="author">by Juwon</p>
+                    <p class="more-info pub">13/07/23</p>
+                    <p class="more-info genre">tragicomic</p>
+                    <p class="more-info page">300 pages</p>
+                </div>
+                <button class="read">read</button>
+            </div>
+        </div>
+        <button class="add-book">+</button>    
+    <dialog>
+        <form method="dialog" accept-charset="utf-8">
+            <h4>Input the book details</h4>
+            <div class="box">
+                <label for="name">Title</label>
+                <input type="text" id="name" autofocus required/>    
+            </div>
+            <div class="box">
+                <label for="Author">Author</label>
+                <input type="text" name="Author" id="author" required/>    
+            </div>
+            <div class="box">
+                <label for="Genre">Genre</label>
+                <input type="text" name="Genre" id="genre" />    
+            </div>
+            <div class="box">
+                <label for="noOfPages">Number of pages</label>
+                <input type="number" name="noOfPages" id="pages">                
+            </div>
+            <div class="box">
+                <label for="pub">Publication Date</label>
+                <input type="date" name="pub" id="pub" />    
+            </div>
+            <button class="submit">create</button>
+        </form>
+    </dialog>
+    </div>
+  <script src="main.js"></script>
+</body>
+</html>
