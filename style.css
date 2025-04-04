@@ -1,9 +1,16 @@
 *{
     margin: 0;
 }
-button{
-    background: black;
-    color: lightblue;
+
+@font-face {
+    font-family: funnel;
+    src: url(fonts/FunnelDisplay-Regular.ttf) format(truetype);
+}
+
+.submit, .read{
+    background: #f0eef1;
+    padding: 5px;
+    border-radius: 15px;
 }
 .body{
     display: flex;
@@ -14,7 +21,7 @@ button{
 }
 
 .header{
-    background-color: #42445A;
+    background-color: #22333B;
     text-align: center;
     padding: 7px;
     border-bottom: 2px solid black;
@@ -27,15 +34,16 @@ button{
     padding: 10px 20px;
     overflow-y: auto;
     gap: 20px;
+    background-color: #f4f1ea;
 }
 
 .book{
     display: flex;
     flex-direction: column;
-    border: 3px solid black;
     border-radius: 20px;
     padding: 10px;
-    background-color: ghostwhite;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.5);
 }
 
 .details{
@@ -68,6 +76,8 @@ button{
     width: 60px;
     border-radius: 15px;
     font-size: 48px;
+    background-color: #f4f1ea;
+    color: black;
 }
 
 dialog{
@@ -77,7 +87,7 @@ dialog{
     justify-self: center;
     align-self: center;
     padding: 20px;
-    background-color: #BABA77;
+    background-color: #EAE0D5;
 }
 
 dialog > form{

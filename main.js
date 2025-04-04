@@ -72,7 +72,7 @@ const pubDate = document.querySelector('#pub')
 const add = document.querySelector('.add-book')
 const dialog = document.querySelector('dialog')
 const submit = document.querySelector('.submit')
-
+const readBtn = document.querySelectorAll('.read')
 add.addEventListener('click', () => {
     name.value = ''
     author.value = ''
@@ -86,4 +86,9 @@ submit.addEventListener('click', () => {
     displayBooks(library)
 })
 
+readBtn.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        
+    })
+})
 displayBooks(library)
