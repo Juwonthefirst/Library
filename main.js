@@ -17,18 +17,6 @@ const addBook = function(name, author, genre, noOfPages, readStatus, pubDate){
     newBook = new Books(name, author, genre, noOfPages, readStatus, pubDate)
     library.push(newBook)
 }
-addBook('Jay Trek', 'Jay', 'Sci-Fi', 600, true, '2025-04-23')
-addBook('Jay the first', 'Jay', 'Fantasy',890, false, '2023-07-12')
-addBook('Jay and the Beast', 'Jay', 'Fantasy', 560, true, '2020-09-30')
-addBook('Jarry Potter', 'Jay', 'Fantasy', 10345, true, '2019-06-07')
-addBook('Jaybob squarejay', 'Jay', 'comedy', 300, false, '2023-07-08')
-addBook('Game of Jay', 'Jay', 'action', 670, false, '2025-06-02')
-addBook('Iron Jay', 'Jay', 'action', 560, false, '2021-03-12')
-addBook('Hunger Jay', 'Jay', 'action', 780, true, '1997-07-31')
-addBook('Attack on Jay', 'Eren Jayger', 'thriller', 800, false,'0001-01-01')
-addBook('Jay of the Rings', 'Jay', 'Fantasy', 400, false, '2023-04-06')
-addBook('Jaydarella', 'Jay', 'Fantasy', 440, false, '2023-07-06')
-addBook('Jayrassic World', 'Jay', 'Biography', 5050, false, '2000-06-09')
 const main = document.querySelector('.main')
 const displayBooks = function(library) {
     main.innerHTML = ''
@@ -70,6 +58,9 @@ const displayBooks = function(library) {
     }
 }
 
+const toggleRead = function(book) {
+    book.read = (book.read)? false:true
+}
 const name = document.querySelector('#name')
 const author = document.querySelector('#author')
 const genre = document.querySelector('#genre')
@@ -78,6 +69,20 @@ const pubDate = document.querySelector('#pub')
 const add = document.querySelector('.add-book')
 const dialog = document.querySelector('dialog')
 const submit = document.querySelector('.submit')
+
+addBook('Jay Trek', 'Jay', 'Sci-Fi', 600, true, '2025-04-23')
+addBook('Jay the first', 'Jay', 'Fantasy',890, false, '2023-07-12')
+addBook('Jay and the Beast', 'Jay', 'Fantasy', 560, true, '2020-09-30')
+addBook('Jarry Potter', 'Jay', 'Fantasy', 10345, true, '2019-06-07')
+addBook('Jaybob squarejay', 'Jay', 'comedy', 300, false, '2023-07-08')
+addBook('Game of Jay', 'Jay', 'action', 670, false, '2025-06-02')
+addBook('Iron Jay', 'Jay', 'action', 560, false, '2021-03-12')
+addBook('Hunger Jay', 'Jay', 'action', 780, true, '1997-07-31')
+addBook('Attack on Jay', 'Eren Jayger', 'thriller', 800, false,'0001-01-01')
+addBook('Jay of the Rings', 'Jay', 'Fantasy', 400, false, '2023-04-06')
+addBook('Jaydarella', 'Jay', 'Fantasy', 440, false, '2023-07-06')
+addBook('Jayrassic World', 'Jay', 'Biography', 5050, false, '2000-06-09')
+
 add.addEventListener('click', () => {
     name.value = ''
     author.value = ''
@@ -97,9 +102,11 @@ readBtn.forEach((button) => {
         for (let book of library) {
             if (event.target === book.id && book.read){
                 event.target.style.backgroundColor = 'green'
+                toggleRead(book)
             }
             else if (event.target === book.id && !book.read){
                 event.target.style.backgroundColor = 'white'
+                toggleRead(book)
             }
         }
     })
