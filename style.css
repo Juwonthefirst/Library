@@ -119,10 +119,10 @@ input:focus{
 
 .delete{
     grid-column-start: 3;
-    background-color: #FC2828F0;
-    color: ghostwhite;
+    border: 2px solid #FC2828F0;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #FC2828F0;
 }
-
 .read{
     border: 2px solid #0FA33D;
     background-color: rgba(255, 255, 255, 0.6);

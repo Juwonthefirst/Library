@@ -9,8 +9,8 @@ function Books(name, author, genre, noOfPages, readStatus, pubDate) {
     this.author = author;
     this.genre = genre;
     this.noOfPages = noOfPages;
-    this.pubDate = pubDate;
     this.readStatus = readStatus;
+    this.pubDate = pubDate;
 }
 
 const addBook = function(name, author, genre, noOfPages, readStatus, pubDate){
@@ -47,7 +47,8 @@ const displayBooks = function(library) {
         details.appendChild(pageTag)
         const readButton = document.createElement('button')
         readButton.classList.add('read')
-        readButton.textContent = 'read'
+        readButton.textContent = (book.readStatus)? 'read':'not read'
+        readButton.style.cssText = (book.readStatus)? 'border-color: #14B747; color: #14B747' : 'border-color: black; color: black'
         readButton.dataset.id = book.id
         details.appendChild(readButton)
         const deleteButton = document.createElement('button')
@@ -60,9 +61,19 @@ const displayBooks = function(library) {
     }
 }
 
-const toggleRead = function(book) {
-    book.read = (book.read)? false:true
+const toggleRead = function(book, element) {
+    if (book.readStatus){
+        book.readStatus = false;
+        element.textContent = 'not read';
+        element.style.cssText = 'border-color: black; color: black'
+    }
+    else{
+        book.readStatus = true;
+        element.textContent = 'read';
+        element.style.cssText = 'border-color: #14B747; color: #14B747'
+    }
 }
+
 const name = document.querySelector('#name')
 const author = document.querySelector('#author')
 const genre = document.querySelector('#genre')
@@ -103,14 +114,12 @@ readBtn.forEach((button) => {
     button.addEventListener('click', (event) => {
         for (let book of library) {
             if (event.target.dataset.id === book.id && book.read){
-                event.target.textContent = 'not read';
-                event.target.style.cssText = 'border-color: black; color: black'
-                toggleRead(book)
+                toggleRead(book, event.target)
             }
             else if (event.target.dataset.id === book.id && !book.read){
                 event.target.textContent = 'read';
                 event.target.style.cssText = 'border-color: #14B747; color: #14B747'
-                toggleRead(book)
+                toggleRead(book, event.target)
             }
         }
     })
