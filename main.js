@@ -51,11 +51,28 @@ const displayBooks = function(library) {
         readButton.textContent = (book.readStatus)? 'read':'not read'
         readButton.style.cssText = (book.readStatus)? 'border-color: #14B747; color: #14B747' : 'border-color: black; color: black '
         readButton.dataset.id = book.id
+        readButton.addEventListener('click', (event) => {
+            library.map((book) => {
+                if (book.id === event.target.dataset.id){
+                    toggleRead(book, event.target)
+                }
+            })
+        })
         details.appendChild(readButton)
         const deleteButton = document.createElement('button')
         deleteButton.classList.add('delete')
         deleteButton.textContent = 'Delete'
         deleteButton.dataset.id = book.id
+        deleteButton.addEventListener('click', (event) => {
+            for (let book of library) {
+                if (book.id === event.target.dataset.id) {
+                    index = library.indexOf(book);
+                    library.splice(index, 1)
+                    const parent = document.querySelector(`div[data-id='${book.id}']`)
+                    parent.remove()
+                }
+            }
+        })
         details.append(deleteButton)
         div.appendChild(details)
         main.appendChild(div)
@@ -116,25 +133,7 @@ displayBooks(library)
 const readBtns = document.querySelectorAll('.read')
 const deleteBtns = document.querySelectorAll('.delete')
 
-readBtns.forEach((button) => {
-    button.addEventListener('click', (event) => {
-        library.map((book) => {
-            if (book.id === event.target.dataset.id){
-                toggleRead(book, event.target)
-            }
-        })
-    })
-})
 
 deleteBtns.forEach((button) => {
-    button.addEventListener('click', (event) => {
-        for (let book of library) {
-            if (book.id === event.target.dataset.id){
-                index = library.indexOf(book);
-                library.splice(index, 1)
-                const parent = document.querySelector(`div[data-id='${book.id}']`)
-                parent.remove()
-            }
-        }
-    })
+    
 })
