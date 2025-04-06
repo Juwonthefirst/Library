@@ -35,7 +35,7 @@ const displayBooks = function(library) {
         details.appendChild(authorTag)
         const pubTag = document.createElement('p')
         pubTag.classList.add('more-info')
-        pubTag.textContent = book.pubDate
+        pubTag.textContent = `Pub: ${book.pubDate}`
         details.appendChild(pubTag)
         const genreTag = document.createElement('p')
         genreTag.classList.add('more-info')
@@ -48,10 +48,12 @@ const displayBooks = function(library) {
         const readButton = document.createElement('button')
         readButton.classList.add('read')
         readButton.textContent = 'read'
+        readButton.dataset.id = book.id
         details.appendChild(readButton)
         const deleteButton = document.createElement('button')
         deleteButton.classList.add('delete')
         deleteButton.textContent = 'Delete'
+        deleteButton.dataset.id = book.id
         details.append(deleteButton)
         div.appendChild(details)
         main.appendChild(div)
@@ -100,12 +102,14 @@ const readBtn = document.querySelectorAll('.read')
 readBtn.forEach((button) => {
     button.addEventListener('click', (event) => {
         for (let book of library) {
-            if (event.target === book.id && book.read){
-                event.target.style.backgroundColor = 'green'
+            if (event.target.dataset.id === book.id && book.read){
+                event.target.textContent = 'not read';
+                event.target.style.cssText = 'border-color: black; color: black'
                 toggleRead(book)
             }
-            else if (event.target === book.id && !book.read){
-                event.target.style.backgroundColor = 'white'
+            else if (event.target.dataset.id === book.id && !book.read){
+                event.target.textContent = 'read';
+                event.target.style.cssText = 'border-color: #14B747; color: #14B747'
                 toggleRead(book)
             }
         }
