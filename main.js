@@ -48,7 +48,7 @@ const displayBooks = function(library) {
         const readButton = document.createElement('button')
         readButton.classList.add('read')
         readButton.textContent = (book.readStatus)? 'read':'not read'
-        readButton.style.cssText = (book.readStatus)? 'border-color: #14B747; color: #14B747' : 'border-color: black; color: black'
+        readButton.style.cssText = (book.readStatus)? 'border-color: #14B747; color: #14B747' : 'border-color: black; color: '
         readButton.dataset.id = book.id
         details.appendChild(readButton)
         const deleteButton = document.createElement('button')
@@ -109,7 +109,10 @@ submit.addEventListener('click', () => {
     displayBooks(library)
 })
 displayBooks(library)
+
 const readBtn = document.querySelectorAll('.read')
+const deleteBtn = document.querySelector('.delete')
+
 readBtn.forEach((button) => {
     button.addEventListener('click', (event) => {
         for (let book of library) {
@@ -124,3 +127,19 @@ readBtn.forEach((button) => {
         }
     })
 })
+
+deleteBtn.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        for (let book of library) {
+            if (event.target.dataset.id === book.id && book.read) {
+                library
+            }
+            else if (event.target.dataset.id === book.id && !book.read) {
+                event.target.textContent = 'read';
+                event.target.style.cssText = 'border-color: #14B747; color: #14B747'
+            }
+        }
+    })
+})
+
+console.log(library)
