@@ -132,9 +132,9 @@ input:focus{
 #close{
     position: absolute;
     z-index: 1;
-    right: 0%;
+    right: 7%;
     width: 10%;
-    height: 7%;
+    height: 5%;
     border: 2px solid #FC2828B5;
     background-color: #EAE0D5;
     color: #FC2828B5;
