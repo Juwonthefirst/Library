@@ -23,6 +23,7 @@ const displayBooks = function(library) {
     for (let book of library) {
         const div = document.createElement('div')
         div.classList.add('book')
+        div.dataset.id = book.id
         const details = document.createElement('div')
         details.classList.add('details')
         const nameTag = document.createElement('h5')
@@ -48,7 +49,7 @@ const displayBooks = function(library) {
         const readButton = document.createElement('button')
         readButton.classList.add('read')
         readButton.textContent = (book.readStatus)? 'read':'not read'
-        readButton.style.cssText = (book.readStatus)? 'border-color: #14B747; color: #14B747' : 'border-color: black; color: '
+        readButton.style.cssText = (book.readStatus)? 'border-color: #14B747; color: #14B747' : 'border-color: black; color: black '
         readButton.dataset.id = book.id
         details.appendChild(readButton)
         const deleteButton = document.createElement('button')
@@ -82,6 +83,7 @@ const pubDate = document.querySelector('#pub')
 const add = document.querySelector('.add-book')
 const dialog = document.querySelector('dialog')
 const submit = document.querySelector('.submit')
+const read = document.querySelector('#readStatus')
 
 addBook('Jay Trek', 'Jay', 'Sci-Fi', 600, true, '2025-04-23')
 addBook('Jay the first', 'Jay', 'Fantasy',890, false, '2023-07-12')
@@ -105,41 +107,34 @@ add.addEventListener('click', () => {
     dialog.showModal()
 })
 submit.addEventListener('click', () => {
-    addBook(name.value, author.value, genre.value, pageNumber.value, 'not read', pubDate.value)
+    addBook(name.value, author.value, genre.value, pageNumber.value, read.checked, pubDate.value)
+    console.log(read.checked)
     displayBooks(library)
 })
 displayBooks(library)
 
-const readBtn = document.querySelectorAll('.read')
-const deleteBtn = document.querySelector('.delete')
+const readBtns = document.querySelectorAll('.read')
+const deleteBtns = document.querySelectorAll('.delete')
 
-readBtn.forEach((button) => {
+readBtns.forEach((button) => {
     button.addEventListener('click', (event) => {
-        for (let book of library) {
-            if (event.target.dataset.id === book.id && book.read){
+        library.map((book) => {
+            if (book.id === event.target.dataset.id){
                 toggleRead(book, event.target)
             }
-            else if (event.target.dataset.id === book.id && !book.read){
-                event.target.textContent = 'read';
-                event.target.style.cssText = 'border-color: #14B747; color: #14B747'
-                toggleRead(book, event.target)
+        })
+    })
+})
+
+deleteBtns.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        for (let book of library) {
+            if (book.id === event.target.dataset.id){
+                index = library.indexOf(book);
+                library.splice(index, 1)
+                const parent = document.querySelector(`div[data-id='${book.id}']`)
+                parent.remove()
             }
         }
     })
 })
-
-deleteBtn.forEach((button) => {
-    button.addEventListener('click', (event) => {
-        for (let book of library) {
-            if (event.target.dataset.id === book.id && book.read) {
-                library
-            }
-            else if (event.target.dataset.id === book.id && !book.read) {
-                event.target.textContent = 'read';
-                event.target.style.cssText = 'border-color: #14B747; color: #14B747'
-            }
-        }
-    })
-})
-
-console.log(library)
