@@ -17,6 +17,21 @@ const addBook = function(name, author, genre, noOfPages, readStatus, pubDate){
     newBook = new Books(name, author, genre, noOfPages, readStatus, pubDate)
     library.push(newBook)
 }
+
+const toggleRead = function(book, element) {
+    if (book.readStatus){
+        book.readStatus = false;
+        element.textContent = 'not read';
+        element.style.cssText = 'border-color: black; color: black'
+    }
+    else{
+        book.readStatus = true;
+        element.textContent = 'read';
+        element.style.cssText = 'border-color: #14B747; color: #14B747'
+    }
+}
+
+
 const main = document.querySelector('.main')
 const displayBooks = function(library) {
     main.innerHTML = ''
@@ -51,44 +66,21 @@ const displayBooks = function(library) {
         readButton.textContent = (book.readStatus)? 'read':'not read'
         readButton.style.cssText = (book.readStatus)? 'border-color: #14B747; color: #14B747' : 'border-color: black; color: black '
         readButton.dataset.id = book.id
-        readButton.addEventListener('click', (event) => {
-            library.map((book) => {
-                if (book.id === event.target.dataset.id){
-                    toggleRead(book, event.target)
-                }
-            })
-        })
+        readButton.addEventListener('click', () => {toggleRead(book, readButton)})
         details.appendChild(readButton)
         const deleteButton = document.createElement('button')
         deleteButton.classList.add('delete')
         deleteButton.textContent = 'Delete'
         deleteButton.dataset.id = book.id
         deleteButton.addEventListener('click', (event) => {
-            for (let book of library) {
-                if (book.id === event.target.dataset.id) {
-                    index = library.indexOf(book);
-                    library.splice(index, 1)
-                    const parent = document.querySelector(`div[data-id='${book.id}']`)
-                    parent.remove()
-                }
-            }
+            index = library.indexOf(book);
+            library.splice(index, 1)
+            const parent = document.querySelector(`div[data-id='${book.id}']`)
+            parent.remove()
         })
         details.append(deleteButton)
         div.appendChild(details)
         main.appendChild(div)
-    }
-}
-
-const toggleRead = function(book, element) {
-    if (book.readStatus){
-        book.readStatus = false;
-        element.textContent = 'not read';
-        element.style.cssText = 'border-color: black; color: black'
-    }
-    else{
-        book.readStatus = true;
-        element.textContent = 'read';
-        element.style.cssText = 'border-color: #14B747; color: #14B747'
     }
 }
 
@@ -129,11 +121,3 @@ submit.addEventListener('click', () => {
     displayBooks(library)
 })
 displayBooks(library)
-
-const readBtns = document.querySelectorAll('.read')
-const deleteBtns = document.querySelectorAll('.delete')
-
-
-deleteBtns.forEach((button) => {
-    
-})
