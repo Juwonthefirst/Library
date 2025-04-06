@@ -128,3 +128,15 @@ input:focus{
     background-color: rgba(255, 255, 255, 0.6);
     color: #14B747;
 }
+
+#close{
+    position: absolute;
+    z-index: 1;
+    right: 0%;
+    width: 10%;
+    height: 7%;
+    border: 2px solid #FC2828F0;
+    background-color: #EAE0D5;
+    color: #FC2828F0;
+    font-size: 20px;
+}

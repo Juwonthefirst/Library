@@ -39,28 +39,35 @@ const displayBooks = function(library) {
         const div = document.createElement('div')
         div.classList.add('book')
         div.dataset.id = book.id
+        
         const details = document.createElement('div')
         details.classList.add('details')
+        
         const nameTag = document.createElement('h5')
         nameTag.classList.add('name')
         nameTag.textContent = book.name
         details.appendChild(nameTag)
+        
         const authorTag = document.createElement('p')
         authorTag.classList.add('author')
         authorTag.textContent = `by ${book.author}`
         details.appendChild(authorTag)
+        
         const pubTag = document.createElement('p')
         pubTag.classList.add('more-info')
         pubTag.textContent = `Pub: ${book.pubDate}`
         details.appendChild(pubTag)
+        
         const genreTag = document.createElement('p')
         genreTag.classList.add('more-info')
         genreTag.textContent = book.genre
         details.appendChild(genreTag)
+        
         const pageTag = document.createElement('p')
         pageTag.classList.add('more-info')
         pageTag.textContent = `${book.noOfPages} pages`
         details.appendChild(pageTag)
+        
         const readButton = document.createElement('button')
         readButton.classList.add('read')
         readButton.textContent = (book.readStatus)? 'read':'not read'
@@ -68,6 +75,7 @@ const displayBooks = function(library) {
         readButton.dataset.id = book.id
         readButton.addEventListener('click', () => {toggleRead(book, readButton)})
         details.appendChild(readButton)
+        
         const deleteButton = document.createElement('button')
         deleteButton.classList.add('delete')
         deleteButton.textContent = 'Delete'
@@ -79,6 +87,7 @@ const displayBooks = function(library) {
             parent.remove()
         })
         details.append(deleteButton)
+        
         div.appendChild(details)
         main.appendChild(div)
     }
@@ -93,6 +102,7 @@ const add = document.querySelector('.add-book')
 const dialog = document.querySelector('dialog')
 const submit = document.querySelector('.submit')
 const read = document.querySelector('#readStatus')
+const close = document.querySelector('#close')
 
 addBook('Jay Trek', 'Jay', 'Sci-Fi', 600, true, '2025-04-23')
 addBook('Jay the first', 'Jay', 'Fantasy',890, false, '2023-07-12')
@@ -119,5 +129,9 @@ submit.addEventListener('click', () => {
     addBook(name.value, author.value, genre.value, pageNumber.value, read.checked, pubDate.value)
     console.log(read.checked)
     displayBooks(library)
+})
+
+close.addEventListener('click', () => {
+    dialog.close()
 })
 displayBooks(library)
