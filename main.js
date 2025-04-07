@@ -134,4 +134,5 @@ submit.addEventListener('click', () => {
 close.addEventListener('click', () => {
     dialog.close()
 })
+
 displayBooks(library)
