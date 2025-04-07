@@ -122,8 +122,10 @@ add.addEventListener('click', () => {
     dialog.showModal()
 })
 submit.addEventListener('click', () => {
-    addBook(name.value, author.value, genre.value, pageNumber.value, read.checked, pubDate.value)
-    displayBooks(library)
+    if (name.value && author.value && genre.value && pageNumber.value &&  pubDate.value){
+        addBook(name.value, author.value, genre.value, pageNumber.value, read.checked, pubDate.value)
+        displayBooks(library)
+    }
 })
 
 close.addEventListener('click', () => {
