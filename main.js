@@ -38,7 +38,6 @@ const displayBooks = function(library) {
     for (let book of library) {
         const div = document.createElement('div')
         div.classList.add('book')
-        div.dataset.id = book.id
         
         const details = document.createElement('div')
         details.classList.add('details')
@@ -72,19 +71,16 @@ const displayBooks = function(library) {
         readButton.classList.add('read')
         readButton.textContent = (book.readStatus)? 'read':'not read'
         readButton.style.cssText = (book.readStatus)? 'border-color: #14B747; color: #14B747' : 'border-color: black; color: black '
-        readButton.dataset.id = book.id
         readButton.addEventListener('click', () => {toggleRead(book, readButton)})
         details.appendChild(readButton)
         
         const deleteButton = document.createElement('button')
         deleteButton.classList.add('delete')
         deleteButton.textContent = 'Delete'
-        deleteButton.dataset.id = book.id
-        deleteButton.addEventListener('click', (event) => {
+        deleteButton.addEventListener('click', () => {
             index = library.indexOf(book);
             library.splice(index, 1)
-            const parent = document.querySelector(`div[data-id='${book.id}']`)
-            parent.remove()
+            div.remove()
         })
         details.append(deleteButton)
         
@@ -127,7 +123,6 @@ add.addEventListener('click', () => {
 })
 submit.addEventListener('click', () => {
     addBook(name.value, author.value, genre.value, pageNumber.value, read.checked, pubDate.value)
-    console.log(read.checked)
     displayBooks(library)
 })
 
