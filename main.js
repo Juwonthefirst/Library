@@ -1,4 +1,5 @@
-console.log('Hello World!');
+import {FormField} from './form-validation.js'
+
 const library = []
 function Books(name, author, genre, noOfPages, readStatus, pubDate) {
     if (!new.target){
@@ -14,7 +15,7 @@ function Books(name, author, genre, noOfPages, readStatus, pubDate) {
 }
 
 const addBook = function(name, author, genre, noOfPages, readStatus, pubDate){
-    newBook = new Books(name, author, genre, noOfPages, readStatus, pubDate)
+    const newBook = new Books(name, author, genre, noOfPages, readStatus, pubDate)
     library.push(newBook)
 }
 
@@ -99,6 +100,7 @@ const dialog = document.querySelector('dialog')
 const submit = document.querySelector('.submit')
 const read = document.querySelector('#readStatus')
 const close = document.querySelector('#close')
+const inputs = document.querySelectorAll('input')
 
 addBook('Jay Trek', 'Jay', 'Sci-Fi', 600, true, '2025-04-23')
 addBook('Jay the first', 'Jay', 'Fantasy',890, false, '2023-07-12')
@@ -112,6 +114,8 @@ addBook('Attack on Jay', 'Eren Jayger', 'thriller', 800, false,'0001-01-01')
 addBook('Jay of the Rings', 'Jay', 'Fantasy', 400, false, '2023-04-06')
 addBook('Jaydarella', 'Jay', 'Fantasy', 440, false, '2023-07-06')
 addBook('Jayrassic World', 'Jay', 'Biography', 5050, false, '2000-06-09')
+
+FormField(inputs, submit).validate()
 
 add.addEventListener('click', () => {
     name.value = ''
